@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Procedural-Tactics.Plugins", "Procedural-Tactics.Plugins.csproj", "{4B23A920-F2B1-FD0D-2AE4-00BF59601FDD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Procedural-Tactics", "Procedural-Tactics.csproj", "{D47B4974-037D-2ED0-00D7-45B8718934CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Procedural-Tactics.Editor.Plugins", "Procedural-Tactics.Editor.Plugins.csproj", "{FC8A154F-1BB5-BA6E-4E85-4992A1103E11}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4B23A920-F2B1-FD0D-2AE4-00BF59601FDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B23A920-F2B1-FD0D-2AE4-00BF59601FDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B23A920-F2B1-FD0D-2AE4-00BF59601FDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B23A920-F2B1-FD0D-2AE4-00BF59601FDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D47B4974-037D-2ED0-00D7-45B8718934CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D47B4974-037D-2ED0-00D7-45B8718934CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D47B4974-037D-2ED0-00D7-45B8718934CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D47B4974-037D-2ED0-00D7-45B8718934CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC8A154F-1BB5-BA6E-4E85-4992A1103E11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC8A154F-1BB5-BA6E-4E85-4992A1103E11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC8A154F-1BB5-BA6E-4E85-4992A1103E11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC8A154F-1BB5-BA6E-4E85-4992A1103E11}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

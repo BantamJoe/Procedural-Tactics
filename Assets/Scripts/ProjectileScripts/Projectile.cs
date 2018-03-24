@@ -136,6 +136,23 @@ public class Projectile : MonoBehaviour {
                     }
 
                     col.gameObject.GetComponent<Shield>().shield.CurrentVal--;
+
+                    if (col.gameObject.GetComponent<BubbleShield>() != null)
+                    {
+                        //col.gameObject.GetComponent<BubbleShield>().AddImpact(col.contacts[0].point);
+
+                        //Vector3 rowX = transform.InverseTransformPoint(col.gameObject.transform.position);
+                        //col.gameObject.GetComponent<BubbleShield>().AddImpact(rowX);
+                        print("Global point: " + transform.position);
+                        print("Local point before: " + transform.localPosition);
+                        transform.SetParent(col.transform);
+
+                        Vector3 rowX = transform.localPosition;
+                        col.gameObject.GetComponent<BubbleShield>().AddImpact(rowX);
+
+                        print("Local point: " + transform.localPosition);
+                        
+                    }
                 }
             }
 

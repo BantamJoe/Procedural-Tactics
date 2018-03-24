@@ -21,6 +21,8 @@ public class ProjectileWeapon : Weapon {
 
         }
 
+
+
         roomList = mech.GetComponent<Mech>().GetRooms();
 
         GameObject projectileGO = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);

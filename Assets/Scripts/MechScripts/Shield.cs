@@ -70,11 +70,21 @@ public class Shield : MonoBehaviour {
 
     public void ManageTransparency()
     {
-        gameObject.GetComponent<Renderer>().material.color = new Color(oldColor.r, oldColor.g, oldColor.b, oldColor.a + shield.CurrentVal * 0.07f);
+        //gameObject.GetComponent<Renderer>().material.color = new Color(oldColor.r, oldColor.g, oldColor.b, oldColor.a + shield.CurrentVal * 0.07f);
     }
 
     void Update()
     {
+
+        //if (Input.GetKeyDown(KeyCode.F5))
+        //{
+        //    if (gameObject.GetComponent<BubbleShield>() != null)
+        //    {
+        //        Vector3 rowX = new Vector3(0.04094822f, 0.2440016f, 0.5316556f);
+        //        gameObject.GetComponent<BubbleShield>().AddImpact(rowX);
+        //    }
+        //}
+
         //Manage shield status
         if (playerMech.GetComponent<Mech>().mechMode == Mech.Mode.Movement)
         {
