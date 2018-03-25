@@ -91,8 +91,10 @@
     <Compile Include="Assets\Scripts\ControllerScripts\EnemySpawner.cs" />
     <Compile Include="Assets\Scripts\ControllerScripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\ControllerScripts\MouseOrbitImproved.cs" />
+    <Compile Include="Assets\Scripts\ControllerScripts\Planet.cs" />
     <Compile Include="Assets\Scripts\ControllerScripts\Player.cs" />
     <Compile Include="Assets\Scripts\ControllerScripts\SceneChanger.cs" />
+    <Compile Include="Assets\Scripts\ControllerScripts\Sun.cs" />
     <Compile Include="Assets\Scripts\Cover.cs" />
     <Compile Include="Assets\Scripts\MechScripts\DropPod.cs" />
     <Compile Include="Assets\Scripts\MechScripts\EnemyMech.cs" />
@@ -109,7 +111,6 @@
     <Compile Include="Assets\Scripts\MechScripts\Rooms\WeaponRoom.cs" />
     <Compile Include="Assets\Scripts\MechScripts\Shield.cs" />
     <Compile Include="Assets\Scripts\MechScripts\Torso.cs" />
-    <Compile Include="Assets\Scripts\Planet.cs" />
     <Compile Include="Assets\Scripts\ProjectileScripts\Bullet.cs" />
     <Compile Include="Assets\Scripts\ProjectileScripts\ICBM.cs" />
     <Compile Include="Assets\Scripts\ProjectileScripts\ImpactEffect.cs" />
@@ -142,6 +143,7 @@
     <Compile Include="Assets\Spline Controller\MathUtils.cs" />
     <Compile Include="Assets\Spline Controller\SplineController.cs" />
     <Compile Include="Assets\Spline Controller\SplineInterpolator.cs" />
+    <Compile Include="Assets\pos.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\BubbleShield.shader" />

@@ -10,8 +10,13 @@ public class Planet : MonoBehaviour {
     [Range(0.1f,10f)]
     public float orbitSpeed = 1f;
     #endregion
-	
-	void Start () 
+
+    void Awake()
+    {
+        DontDestroyOnLoad(transform.gameObject);
+    }
+
+    void Start () 
 	{
 		
 	}

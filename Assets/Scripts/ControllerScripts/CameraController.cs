@@ -11,12 +11,11 @@ public class CameraController : MonoBehaviour {
 	public float minY = 10f;
 	public float maxY = 120f;
 
-    private void Awake()
+    void Awake()
     {
         DontDestroyOnLoad(transform.gameObject);
     }
 
-    
     void Update() 
     {
 

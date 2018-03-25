@@ -22,6 +22,11 @@ public class UpgradeButton : MonoBehaviour {
         button = GetComponent<Button>();
     }
 
+    void OnEnable()
+    {
+        player = GameObject.Find("Player");
+    }
+
     void OnButtonClick(GameObject roomToUpgrade)
     {
         if (Player.resources >= roomToUpgrade.GetComponent<Room>().upgradeCost)
@@ -33,6 +38,7 @@ public class UpgradeButton : MonoBehaviour {
 
     public void Init()
     {
+        player = GameObject.Find("Player");
         playerMech = GameObject.Find("PlayerMech(Clone)");
 
         if (playerMech != null)
@@ -57,6 +63,11 @@ public class UpgradeButton : MonoBehaviour {
 
     void Update()
     {
+        if (playerMech == null || player == null)
+        {
+            initDone = false;
+        }
+
         if (initDone == false)
         {
             Init();

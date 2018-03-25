@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
@@ -12,6 +12,8 @@ public class SceneChanger : MonoBehaviour {
     public GameObject[] enemyUIToDelete;
     public GameObject mainCameraObject;
     public Camera mainCamera;
+
+    
 
     void Start()
     {
@@ -29,18 +31,20 @@ public class SceneChanger : MonoBehaviour {
 	
 	}
 
-    public void ChangeToRandomScene()
-    {
-        enemyUIToDelete = GameObject.FindGameObjectsWithTag("Enemy");
-        int len = enemyUIToDelete.Length;
+    //public void ChangeToRandomScene()
+    //{
+    //    enemyUIToDelete = GameObject.FindGameObjectsWithTag("Enemy");
+    //    int len = enemyUIToDelete.Length;
 
-        for (int i = 0; i < len; i++)
-        {
-            Destroy(enemyUIToDelete[i].GetComponent<EnemyMech>().UI);
-        }
+    //    for (int i = 0; i < len; i++)
+    //    {
+    //        Destroy(enemyUIToDelete[i].GetComponent<EnemyMech>().UI);
+    //    }
 
-        SceneManager.LoadScene(Random.Range(1, 3));
-    }
+    //    SceneManager.LoadScene(Random.Range(1, 3));
+    //}
+
+    
 
     public void ChangeToSolarSystem()
     {
@@ -59,6 +63,7 @@ public class SceneChanger : MonoBehaviour {
 
         playerUI.SetActive(false);
         SceneManager.LoadScene(3);
+        
         mainCamera.gameObject.SetActive(false);
         gameMaster.GetComponent<MechFall>().readyForMechFall = false;
     }

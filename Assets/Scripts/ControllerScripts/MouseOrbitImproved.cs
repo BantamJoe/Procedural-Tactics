@@ -28,6 +28,7 @@ public class MouseOrbitImproved : MonoBehaviour
     float x = 0.0f;
     float y = 0.0f;
 
+    public GameObject sunPrefab;
     public GameObject sun;
     public GameObject[] planetListTemp;
     private int len;
@@ -39,6 +40,9 @@ public class MouseOrbitImproved : MonoBehaviour
     {
         gameMaster = GameObject.Find("GameMaster");
         gameManager = gameMaster.GetComponent<GameManager>();
+
+        sun = Instantiate(sunPrefab, new Vector3(0,0,0), Quaternion.identity) as GameObject;
+        target = sun.transform;
 
         defaultXSpeed = xSpeed;
         defaultYSpeed = ySpeed;
@@ -65,9 +69,16 @@ public class MouseOrbitImproved : MonoBehaviour
             target = gameManager.targetPlanet;
         }
 
+        
+
         UpdateTargetRadius(target);
 
-        sun = GameObject.Find("Sun");
+        distanceMin = 1000;
+        distanceMax = 2000;
+        distance = (distanceMin + distanceMax) / 2;
+        xSpeed = defaultXSpeed / 15;
+        ySpeed = defaultYSpeed / 15;
+
         planetListTemp = GameObject.FindGameObjectsWithTag("Planet");
         len = planetListTemp.Length;
 

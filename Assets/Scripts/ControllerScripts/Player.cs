@@ -95,32 +95,32 @@ public class Player : MonoBehaviour {
             }
             else if (hitInfo.transform.gameObject.tag == "Zone")
             {
-                if (hitInfo.transform.parent.name == "Dirt")
+                if (hitInfo.transform.parent.name == "Dirt(Clone)")
                 {
                     SceneManager.LoadScene("DirtZone");
                 }
 
-                if (hitInfo.transform.parent.name == "Moon")
+                if (hitInfo.transform.parent.name == "Moon(Clone)")
                 {
                     SceneManager.LoadScene("MoonZone");
                 }
 
-                if (hitInfo.transform.parent.name == "Concrete")
+                if (hitInfo.transform.parent.name == "Concrete(Clone)")
                 {
                     SceneManager.LoadScene("ConcreteZone");
                 }
 
-                if (hitInfo.transform.parent.name == "Asphalt")
+                if (hitInfo.transform.parent.name == "Asphalt(Clone)")
                 {
                     SceneManager.LoadScene("AsphaltZone");
                 }
 
-                if (hitInfo.transform.parent.name == "Cliff")
+                if (hitInfo.transform.parent.name == "Cliff(Clone)")
                 {
                     SceneManager.LoadScene("CliffZone");
                 }
 
-                if (hitInfo.transform.parent.name == "Gravel")
+                if (hitInfo.transform.parent.name == "Gravel(Clone)")
                 {
                     SceneManager.LoadScene("GravelZone");
                 }
