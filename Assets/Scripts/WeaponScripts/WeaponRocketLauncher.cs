@@ -53,7 +53,7 @@ public class WeaponRocketLauncher : ProjectileWeapon {
             if (fireCountdown <= 0f && rotationCompleted == true)
             {
                 //Shoot();
-                StartCoroutine(ShootVolley(20));
+                StartCoroutine(ShootVolley(1));
                 //fireCountdown = 1f / fireRate;
                 fireCountdown = originalFireCountdown;
             }
