@@ -8,6 +8,8 @@ public class SceneChanger : MonoBehaviour {
     public GameObject gameMaster;
     public GameObject playerUI;
     public GameObject playerMech;
+    public GameObject player;
+    public Player p;
 
     public GameObject[] enemyUIToDelete;
     public GameObject mainCameraObject;
@@ -20,6 +22,8 @@ public class SceneChanger : MonoBehaviour {
         gameMaster = GameObject.Find("GameMaster");
         playerUI = GameObject.Find("PlayerCanvas");
         playerMech = GameObject.Find("PlayerMech(Clone)");
+        player = GameObject.Find("Player");
+        p = player.GetComponent<Player>();
 
         mainCameraObject = GameObject.Find("Main Camera");
         mainCamera = mainCameraObject.GetComponent<Camera>();
@@ -30,21 +34,6 @@ public class SceneChanger : MonoBehaviour {
     {
 	
 	}
-
-    //public void ChangeToRandomScene()
-    //{
-    //    enemyUIToDelete = GameObject.FindGameObjectsWithTag("Enemy");
-    //    int len = enemyUIToDelete.Length;
-
-    //    for (int i = 0; i < len; i++)
-    //    {
-    //        Destroy(enemyUIToDelete[i].GetComponent<EnemyMech>().UI);
-    //    }
-
-    //    SceneManager.LoadScene(Random.Range(1, 3));
-    //}
-
-    
 
     public void ChangeToSolarSystem()
     {
@@ -63,6 +52,16 @@ public class SceneChanger : MonoBehaviour {
 
         playerUI.SetActive(false);
         SceneManager.LoadScene(3);
+
+        if (p.sun != null)
+        {
+            p.sun.SetActive(true);
+
+            foreach (GameObject planet in p.sun.GetComponent<Sun>().planetList)
+            {
+                planet.SetActive(true);
+            }
+        }
         
         mainCamera.gameObject.SetActive(false);
         gameMaster.GetComponent<MechFall>().readyForMechFall = false;

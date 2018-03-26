@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour {
 
     public Transform targetPlanet;
     public string targetPlanetName;
+    public bool solarSystemCreated;
 
     public static List<GameObject> weaponList;
     public GameObject smallLaserI;

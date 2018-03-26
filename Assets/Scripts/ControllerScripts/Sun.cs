@@ -15,14 +15,14 @@ public class Sun : MonoBehaviour {
 
     void Start() 
 	{
-        GenerateSolarSystem(Random.Range(5, 21));
+        GenerateSolarSystem(Random.Range(8, 11));
 	}
 
     public void GenerateSolarSystem(int planetCount)
     {
         for (int i = 0; i < planetCount; i++)
         {
-            Instantiate(planetPrefabList[Random.Range(0, planetPrefabList.Count)], new Vector3(Random.Range(-1000, 1000), 0, Random.Range(-1000, 1000)), Quaternion.identity);
+            planetList.Add(Instantiate(planetPrefabList[Random.Range(0, planetPrefabList.Count)], new Vector3(i * 145 + 240, 0, 0), Quaternion.identity));
         }
     }
 

@@ -18,8 +18,17 @@ public class Planet : MonoBehaviour {
 
     void Start () 
 	{
-		
-	}
+        transform.Rotate(Vector3.up * Random.Range(0, 360));
+
+        if (orbitingTarget == null)
+        {
+            transform.RotateAround(Vector3.zero, Vector3.up, Random.Range(0, 360));
+        }
+        else
+        {
+            transform.RotateAround(orbitingTarget.position, orbitingTarget.up, Random.Range(0, 360));
+        }
+    }
 	
 	void Update () 
 	{

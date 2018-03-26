@@ -8,6 +8,8 @@ public class MouseOrbitImproved : MonoBehaviour
     public GameObject gameMaster;
     public GameManager gameManager;
 
+    public bool solarSystemCreated;
+
     public Transform target;
     public float distance = 5.0f;
     public Vector3 negDistance;
@@ -41,8 +43,18 @@ public class MouseOrbitImproved : MonoBehaviour
         gameMaster = GameObject.Find("GameMaster");
         gameManager = gameMaster.GetComponent<GameManager>();
 
-        sun = Instantiate(sunPrefab, new Vector3(0,0,0), Quaternion.identity) as GameObject;
-        target = sun.transform;
+        if (gameManager.solarSystemCreated == false)
+        {
+            gameManager.solarSystemCreated = true;
+            sun = Instantiate(sunPrefab, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+            target = sun.transform;
+        }
+        else
+        {
+            sun = GameObject.FindGameObjectsWithTag("Sun")[0];
+        }
+        
+        
 
         defaultXSpeed = xSpeed;
         defaultYSpeed = ySpeed;
@@ -73,12 +85,15 @@ public class MouseOrbitImproved : MonoBehaviour
 
         UpdateTargetRadius(target);
 
-        distanceMin = 1000;
-        distanceMax = 2000;
-        distance = (distanceMin + distanceMax) / 2;
-        xSpeed = defaultXSpeed / 15;
-        ySpeed = defaultYSpeed / 15;
-
+        if (target.name == "Sun(Clone)")
+        {
+            distanceMin = 1000;
+            distanceMax = 2000;
+            distance = (distanceMin + distanceMax) / 2;
+            xSpeed = defaultXSpeed / 15;
+            ySpeed = defaultYSpeed / 15;
+        }
+        
         planetListTemp = GameObject.FindGameObjectsWithTag("Planet");
         len = planetListTemp.Length;
 
@@ -104,13 +119,13 @@ public class MouseOrbitImproved : MonoBehaviour
 
             Quaternion rotation = Quaternion.Euler(y, x, 0);
 
-            if (target.name == "Sun")
+            if (target.name == "Sun(Clone)")
             {
-                distance = Mathf.Clamp(distance - Input.GetAxis("Mouse ScrollWheel") * 200, distanceMin, distanceMax);
+                distance = Mathf.Clamp(distance - Input.GetAxis("Mouse ScrollWheel") * 600, distanceMin, distanceMax);
             }
             else
             {
-                distance = Mathf.Clamp(distance - Input.GetAxis("Mouse ScrollWheel") * 20, distanceMin, distanceMax);
+                distance = Mathf.Clamp(distance - Input.GetAxis("Mouse ScrollWheel") * 60, distanceMin, distanceMax);
             }
 
             Vector3 position = rotation * new Vector3(0.0f, 0.0f, -distance) + target.position;

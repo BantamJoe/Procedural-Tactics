@@ -29,6 +29,8 @@ public class Player : MonoBehaviour {
     public Camera mainCamera;
     public string previousTag;
 
+    public GameObject sun;
+
     private void Awake()
     {
         DontDestroyOnLoad(transform.gameObject);
@@ -95,6 +97,8 @@ public class Player : MonoBehaviour {
             }
             else if (hitInfo.transform.gameObject.tag == "Zone")
             {
+                sun = GameObject.FindGameObjectsWithTag("Sun")[0];
+
                 if (hitInfo.transform.parent.name == "Dirt(Clone)")
                 {
                     SceneManager.LoadScene("DirtZone");
@@ -126,6 +130,13 @@ public class Player : MonoBehaviour {
                 }
 
                 Camera.allCameras[0].gameObject.SetActive(false);
+
+                foreach (GameObject p in sun.GetComponent<Sun>().planetList)
+                {
+                    p.SetActive(false);
+                }
+
+                sun.SetActive(false);
 
                 playerUI.SetActive(true);
                 playerUI.transform.Find("WeaponsUI").gameObject.SetActive(false);
