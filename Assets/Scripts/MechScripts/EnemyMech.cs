@@ -222,6 +222,22 @@ public class EnemyMech : Mech {
 
     void SelectTarget()
     {
+        if (heat.CurrentVal > 70)
+        {
+            targetRoom = null;
+            int len = weaponList.Count;
+            for (int i = 0; i < len; i++)
+            {
+                if (weaponList[i] != null)
+                {
+                    weaponList[i].GetComponent<Weapon>().targetSelected = false;
+                    weaponList[i].GetComponent<Weapon>().enemyRoom = null;
+                    weaponList[i].GetComponent<Weapon>().target = null;
+                }
+            }
+            return;
+        }
+
         if (playerMech == null)
         {
             playerMech = GameObject.Find("PlayerMech(Clone)");

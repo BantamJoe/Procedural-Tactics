@@ -36,8 +36,7 @@ public class Shield : MonoBehaviour {
     {
         if (playerMech.GetComponent<Mech>().mechMode == Mech.Mode.Movement)
         {
-            shield.CurrentVal = 0;
-            regenAmount = 0;
+
         }
         else
         {
@@ -76,19 +75,15 @@ public class Shield : MonoBehaviour {
     void Update()
     {
 
-        //if (Input.GetKeyDown(KeyCode.F5))
-        //{
-        //    if (gameObject.GetComponent<BubbleShield>() != null)
-        //    {
-        //        Vector3 rowX = new Vector3(0.04094822f, 0.2440016f, 0.5316556f);
-        //        gameObject.GetComponent<BubbleShield>().AddImpact(rowX);
-        //    }
-        //}
-
         //Manage shield status
         if (playerMech.GetComponent<Mech>().mechMode == Mech.Mode.Movement)
         {
-            shield.CurrentVal = 0;
+            if (shield.CurrentVal > shield.MaxVal / 2)
+            {
+                shield.CurrentVal = shield.MaxVal / 2;
+            }
+
+            regenAmount = 0;
         }
         else
         {
