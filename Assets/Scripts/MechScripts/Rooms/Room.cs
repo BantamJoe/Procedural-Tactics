@@ -22,6 +22,12 @@ public abstract class Room : MonoBehaviour {
     public GameObject mech;
     public Mech m;
 
+    public Material defaultMat;
+    public Material defaultSmokeMat;
+    public Color defaultSmokeColor;
+    public Material yellowMat;
+    public Material redMat;
+
     void Awake()
     {
         if (transform.parent.GetComponent<Mech>() != null)
@@ -45,6 +51,7 @@ public abstract class Room : MonoBehaviour {
         }
 
         mech.GetComponent<Mech>().roomList.Add(gameObject);
+
     }
 
     public void SetBarScale(int level)
@@ -64,21 +71,43 @@ public abstract class Room : MonoBehaviour {
 
     }
 
-    public void ManageColor()
+    public void ManageColorAndSmoke()
     {
         if (previousHealth != health.CurrentVal)
         {
             if (previousHealth > 0 && health.CurrentVal <= 0)
             {
-                GetComponent<Renderer>().material.color = Color.red;
+                GetComponent<Renderer>().material = redMat;
+
+                if (transform.Find("SmokeEffect") != null)
+                {
+                    transform.Find("SmokeEffect").gameObject.SetActive(true);
+                    transform.Find("SmallExplosionEffect").gameObject.SetActive(true);
+                    transform.Find("SmokeEffect").gameObject.GetComponent<Renderer>().material = defaultSmokeMat;
+                    transform.Find("SmokeEffect").gameObject.GetComponent<Renderer>().material.color = defaultSmokeColor;
+                }
             }
             else if (health.CurrentVal < health.MaxVal && health.CurrentVal > 0)
             {
-                GetComponent<Renderer>().material.color = Color.yellow;
+                GetComponent<Renderer>().material = yellowMat;
+
+                if (transform.Find("SmokeEffect") != null)
+                {
+                    transform.Find("SmokeEffect").gameObject.SetActive(false);
+                    transform.Find("SmokeEffect").gameObject.GetComponent<Renderer>().material = defaultSmokeMat;
+                    transform.Find("SmokeEffect").gameObject.GetComponent<Renderer>().material.color = defaultSmokeColor;
+                }
             }
             else
             {
-                GetComponent<Renderer>().material.color = Color.black;
+                GetComponent<Renderer>().material = defaultMat;
+
+                if (transform.Find("SmokeEffect") != null)
+                {
+                    transform.Find("SmokeEffect").gameObject.SetActive(false);
+                    transform.Find("SmokeEffect").gameObject.GetComponent<Renderer>().material = defaultSmokeMat;
+                    transform.Find("SmokeEffect").gameObject.GetComponent<Renderer>().material.color = defaultSmokeColor;
+                }
             }
         }
 

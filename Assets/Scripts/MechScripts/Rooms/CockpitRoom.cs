@@ -21,6 +21,14 @@ public class CockpitRoom : Room {
         m = mech.GetComponent<Mech>();
 
         InvokeRepeating("AutoRepair", 0f, 1f);
+
+        defaultMat = GetComponent<Renderer>().material;
+
+        if (transform.Find("SmokeEffect") != null)
+        {
+            defaultSmokeMat = transform.Find("SmokeEffect").gameObject.GetComponent<Renderer>().material;
+            defaultSmokeColor = transform.Find("SmokeEffect").gameObject.GetComponent<Renderer>().material.color;
+        }
     }
 
     public override void FindBars()
@@ -40,7 +48,7 @@ public class CockpitRoom : Room {
 	void Update() 
     {
         SetEnergyToCurrentHealth();
-        ManageColor();
+        ManageColorAndSmoke();
 
         if (!Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.Q))
         {

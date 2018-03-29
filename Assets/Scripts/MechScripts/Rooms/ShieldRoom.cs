@@ -40,6 +40,15 @@ public class ShieldRoom : Room {
         shieldObj = transform.parent.parent.Find("Shield").gameObject;
 
         InvokeRepeating("AutoRepair", 0f, 1f);
+
+        defaultMat = GetComponent<Renderer>().material;
+
+        if (transform.Find("SmokeEffect") != null)
+        {
+            defaultSmokeMat = transform.Find("SmokeEffect").gameObject.GetComponent<Renderer>().material;
+            defaultSmokeColor = transform.Find("SmokeEffect").gameObject.GetComponent<Renderer>().material.color;
+        }
+
     }
 
     public void SetShieldBarScale(int level)
@@ -90,6 +99,6 @@ public class ShieldRoom : Room {
     void Update() 
     {
         SetEnergyToCurrentHealth();
-        ManageColor();
+        ManageColorAndSmoke();
     }
 }
