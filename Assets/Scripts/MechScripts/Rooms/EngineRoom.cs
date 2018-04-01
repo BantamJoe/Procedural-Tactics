@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class EngineRoom : Room {
 
-	void Start()
+    public float originalMaxSpeed;
+    public float originalMaxRotationSpeed;
+    public float originalAcceleration;
+    public float originalRotationAcceleration;
+
+    void Start()
     {
         regenTime = 2f;
         regenSpeed = 0.05f;
@@ -19,6 +24,14 @@ public class EngineRoom : Room {
 
         mech = transform.root.gameObject;
         m = mech.GetComponent<Mech>();
+
+        originalMaxSpeed = m.maxSpeed;
+        originalMaxRotationSpeed = m.maxRotationSpeed;
+        originalAcceleration = m.acceleration;
+        originalRotationAcceleration = m.rotationAcceleration;
+
+        m.fullAcceleration = originalAcceleration;
+        m.fullRotationAcceleration = originalRotationAcceleration;
 
         InvokeRepeating("AutoRepair", 0f, 1f);
 
@@ -37,10 +50,50 @@ public class EngineRoom : Room {
         health.bar = UI.transform.Find("EngineHealthBar").gameObject.GetComponent<Bar>();
     }
 
+    public override void LevelUp()
+    {
+        level++;
+        health.MaxVal++;
+        health.CurrentVal++;
+        ener.MaxVal++;
+        health.UpdateBar();
+        ener.UpdateBar();
+
+        SetBarScale(level);
+        SetBarPosition(level);
+
+        m.fullAcceleration = m.fullAcceleration + originalAcceleration * 0.2f;
+        m.fullRotationAcceleration = m.fullRotationAcceleration + originalRotationAcceleration * 0.2f;
+
+        if (level <= 4)
+        {
+            upgradeCost = upgradeCost * 2;
+        }
+        else
+        {
+            upgradeCost = upgradeCost + 200;
+        }
+
+    }
+
     void Update() 
     {
         SetEnergyToCurrentHealth();
         ManageColorAndSmoke();
+
+        if (ener.CurrentVal > 0)
+        {
+            m.maxSpeed = originalMaxSpeed + ener.CurrentVal * 0.1f * originalMaxSpeed;
+            m.maxRotationSpeed = originalMaxRotationSpeed + ener.CurrentVal * 0.1f * originalMaxRotationSpeed;
+            m.acceleration = originalAcceleration + ener.CurrentVal * 0.2f * originalAcceleration;
+            m.rotationAcceleration = originalRotationAcceleration + ener.CurrentVal * 0.2f * originalRotationAcceleration;
+        }
+        else
+        {
+            m.acceleration = 0f;
+            m.rotationAcceleration = 0f;
+        }
+        
 
         if (!Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.W))
         {

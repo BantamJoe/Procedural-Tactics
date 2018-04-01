@@ -35,6 +35,8 @@ public class WeaponAC : ProjectileWeapon {
     {
         if (weaponPowered)
         {
+            fireCountdown -= Time.deltaTime;
+
             if (targetSelected)
             {
                 if (enemyRoom != null)
@@ -57,9 +59,7 @@ public class WeaponAC : ProjectileWeapon {
                 fireCountdown = originalFireCountdown;
             }
 
-            fireCountdown -= Time.deltaTime;
+            
         }
     }
-
-
-    }
+}

@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections;
 
-public class WeaponRocketLauncher : ProjectileWeapon {
+public class WeaponRocketLauncher : ProjectileWeapon
+{
 
     [Header("Unity Setup Fields")]
 
@@ -35,6 +36,8 @@ public class WeaponRocketLauncher : ProjectileWeapon {
     {
         if (weaponPowered)
         {
+            fireCountdown -= Time.deltaTime;
+
             if (targetSelected)
             {
                 if (enemyRoom != null)
@@ -57,10 +60,6 @@ public class WeaponRocketLauncher : ProjectileWeapon {
                 //fireCountdown = 1f / fireRate;
                 fireCountdown = originalFireCountdown;
             }
-
-            fireCountdown -= Time.deltaTime;
         }
     }
-
-
-    }
+}

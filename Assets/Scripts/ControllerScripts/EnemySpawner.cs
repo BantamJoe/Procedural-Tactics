@@ -10,9 +10,7 @@ public class EnemySpawner : MonoBehaviour {
 
     public GameObject enemyMechPrefab1;
     public GameObject enemyMechPrefab2;
-
-    public GameObject enemyMechUIPrefab1;
-    public GameObject enemyMechUIPrefab2;
+    public GameObject enemyMechPrefab3;
 
     public List<GameObject> enemyList;
     public List<GameObject> enemyPrefabList;
@@ -38,30 +36,38 @@ public class EnemySpawner : MonoBehaviour {
 
     void Start()
     {
+
+        enemyMechPrefab3 = Resources.Load("EnemyMech 3") as GameObject;
+
         enemyPrefabList.Add(enemyMechPrefab1);
         enemyPrefabList.Add(enemyMechPrefab2);
+        enemyPrefabList.Add(enemyMechPrefab3);
+
 
         allEnemiesDead = false;
         lootGiven = false;
 
-        temp = Random.Range(0, 10);
+        enemy1 = Instantiate(enemyPrefabList[2], spawnPoint1.position, spawnPoint1.rotation) as GameObject;
+        enemyList.Add(enemy1);
 
-        if (temp >= 2)
-        {
-            enemy1 = Instantiate(enemyPrefabList[Random.Range(0, enemyPrefabList.Count)], spawnPoint1.position, spawnPoint1.rotation) as GameObject;
-            enemyList.Add(enemy1);
-        }
+        //temp = Random.Range(0, 10);
 
-        if (GameManager.sectorNumber > 2)
-        {
-            temp = Random.Range(0, 2);
+        //if (temp >= 2)
+        //{
+        //    enemy1 = Instantiate(enemyPrefabList[Random.Range(0, enemyPrefabList.Count)], spawnPoint1.position, spawnPoint1.rotation) as GameObject;
+        //    enemyList.Add(enemy1);
+        //}
 
-            if (temp == 1)
-            {
-                enemy2 = Instantiate(enemyPrefabList[Random.Range(0, enemyPrefabList.Count)], spawnPoint2.position, spawnPoint2.rotation) as GameObject;
-                enemyList.Add(enemy2);
-            }
-        }
+        //if (GameManager.sectorNumber > 2)
+        //{
+        //    temp = Random.Range(0, 2);
+
+        //    if (temp == 1)
+        //    {
+        //        enemy2 = Instantiate(enemyPrefabList[Random.Range(0, enemyPrefabList.Count)], spawnPoint2.position, spawnPoint2.rotation) as GameObject;
+        //        enemyList.Add(enemy2);
+        //    }
+        //}
     }
 	
 	

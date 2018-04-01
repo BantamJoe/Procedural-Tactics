@@ -143,9 +143,6 @@ public class Projectile : MonoBehaviour {
 
                         Vector3 rowX = transform.localPosition;
                         col.gameObject.GetComponent<BubbleShield>().AddImpact(rowX);
-
-                        print("Local point: " + transform.localPosition);
-                        
                     }
                 }
             }

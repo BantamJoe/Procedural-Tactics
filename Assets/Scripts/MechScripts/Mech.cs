@@ -70,10 +70,12 @@ public abstract class Mech : MonoBehaviour {
     public float maxSpeed;
     public float currentSpeed;
     public float acceleration;
+    public float fullAcceleration;
 
     public float maxRotationSpeed;
     public float currentRotationSpeed;
     public float rotationAcceleration;
+    public float fullRotationAcceleration;
     public float halfRotationAngle;
     public float previousTorsoRotation;
 

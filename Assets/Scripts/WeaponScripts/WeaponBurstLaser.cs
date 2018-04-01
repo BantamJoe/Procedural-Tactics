@@ -46,6 +46,8 @@ public class WeaponBurstLaser : ProjectileWeapon {
     {
         if (weaponPowered)
         {
+            fireCountdown -= Time.deltaTime;
+
             if (targetSelected)
             {
                 if (enemyRoom != null)
@@ -76,8 +78,6 @@ public class WeaponBurstLaser : ProjectileWeapon {
                     fireCountdown = originalFireCountdown;
                 }
             }
-            fireCountdown -= Time.deltaTime;
         }
     }
-
-    }
+}

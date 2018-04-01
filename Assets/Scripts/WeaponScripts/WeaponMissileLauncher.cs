@@ -35,6 +35,8 @@ public class WeaponMissileLauncher : ProjectileWeapon {
     {
         if (weaponPowered)
         {
+            fireCountdown -= Time.deltaTime;
+
             if (targetSelected)
             {
                 if (enemyRoom != null)
@@ -56,10 +58,6 @@ public class WeaponMissileLauncher : ProjectileWeapon {
                 //fireCountdown = 1f / fireRate;
                 fireCountdown = originalFireCountdown;
             }
-
-            fireCountdown -= Time.deltaTime;
         }
     }
-
-
-    }
+}
