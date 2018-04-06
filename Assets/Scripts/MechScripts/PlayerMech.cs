@@ -190,14 +190,14 @@ public class PlayerMech : Mech {
             stamina.CurrentVal += 2;
         }
 
-        if (health.CurrentVal <= 0 || pilotHealth.CurrentVal <= 0 && gameOver == false)
+        if ((health.CurrentVal <= 0 || pilotHealth.CurrentVal <= 0) && gameOver == false)
         {
             gameOver = true;
+            isDead = true;
             UI.transform.Find("RestartButton").gameObject.SetActive(true);
-            Destroy(gameObject);
+            Destroy(gameObject, 2.1f);
 
-            GameObject effectIns = Instantiate(impactEffect, transform.position, transform.rotation);
-            Destroy(effectIns, 6f);
+            CreateDeathExplosion();
         }
 
         if (Input.GetKey(KeyCode.UpArrow))

@@ -297,13 +297,14 @@ public class EnemyMech : Mech {
             stamina.CurrentVal += 2;
         }
 
-        if (health.CurrentVal <= 0 || pilotHealth.CurrentVal <= 0)
+        if ((health.CurrentVal <= 0 || pilotHealth.CurrentVal <= 0) && isDead == false)
         {
+            isDead = true;
             Destroy(UI);
-            Destroy(gameObject);
+            Destroy(gameObject, 2.1f);
 
-            GameObject effectIns = Instantiate(impactEffect, transform.position, transform.rotation);
-            Destroy(effectIns, 6f);
+            print("isdead:" + isDead);
+            CreateDeathExplosion();
         }
 
         PowerEnemyRooms();

@@ -74,6 +74,14 @@ public class EnemySpawner : MonoBehaviour {
 	void Update() 
     {
 
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            foreach (GameObject m in enemyList)
+            {
+                m.GetComponent<Mech>().health.CurrentVal = 0;
+            }
+        }
+
         if (Input.GetKeyDown(KeyCode.O))
         {
             Instantiate(enemyMechPrefab1, new Vector3(Random.Range(-200, 200), 4.3f, Random.Range(-200, 200)), Quaternion.identity);

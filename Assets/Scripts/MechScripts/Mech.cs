@@ -101,6 +101,7 @@ public abstract class Mech : MonoBehaviour {
     public int weaponSlotCount;
     public int totalWeaponEnergyReq;
 
+    public bool isDead;
     public bool gameOver;
 
     public enum Mode
@@ -461,6 +462,23 @@ public abstract class Mech : MonoBehaviour {
                 }
 
             }
+        }
+    }
+
+    public void CreateBigExplosion()
+    {
+        GameObject effectIns = Instantiate(impactEffect, transform.position, transform.rotation);
+        Destroy(effectIns, 6f);
+    }
+
+    public void CreateDeathExplosion()
+    {
+        Invoke("CreateBigExplosion", 2f);
+
+        foreach (GameObject room in roomList)
+        {
+            room.GetComponent<Room>().Invoke("CreateExplosion", Random.Range(0f, 2f));
+            print("invoke room:" + room);
         }
     }
 

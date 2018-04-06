@@ -22,6 +22,8 @@ public abstract class Room : MonoBehaviour {
     public GameObject mech;
     public Mech m;
 
+    public GameObject smallExplosion;
+
     public Material defaultMat;
     public Material defaultSmokeMat;
     public Color defaultSmokeColor;
@@ -71,6 +73,13 @@ public abstract class Room : MonoBehaviour {
 
     }
 
+    public void CreateExplosion()
+    {
+        smallExplosion = Resources.Load("SmallExplosionEffect") as GameObject;
+        GameObject effectIns = Instantiate(smallExplosion, transform.position, transform.rotation);
+        Destroy(effectIns, 6f);
+    }
+
     public void ManageColorAndSmoke()
     {
         if (previousHealth != health.CurrentVal)
@@ -82,7 +91,7 @@ public abstract class Room : MonoBehaviour {
                 if (transform.Find("SmokeEffect") != null)
                 {
                     transform.Find("SmokeEffect").gameObject.SetActive(true);
-                    transform.Find("SmallExplosionEffect").gameObject.SetActive(true);
+                    CreateExplosion();
                     transform.Find("SmokeEffect").gameObject.GetComponent<Renderer>().material = defaultSmokeMat;
                     transform.Find("SmokeEffect").gameObject.GetComponent<Renderer>().material.color = defaultSmokeColor;
                 }
