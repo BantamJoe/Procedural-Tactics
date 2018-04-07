@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public class PlayerUI : MonoBehaviour {
 
     public Text resourcesText;
+    public Text lootResourcesText;
     public Text energyText;
     public Text sectorNumberText;
 
@@ -53,6 +54,7 @@ public class PlayerUI : MonoBehaviour {
         }
 
         transform.Find("InventoryLoot").gameObject.SetActive(false);
+        lootResourcesText.gameObject.SetActive(false);
         transform.Find("TakeLootButton").gameObject.SetActive(false);
     }
 
@@ -71,16 +73,23 @@ public class PlayerUI : MonoBehaviour {
             child.gameObject.GetComponent<WeaponSelection>().attachedWeapon.transform.SetParent(playerMech.transform);
         }
 
-        Player.resources += GameManager.sectorDifficulty + GameManager.sectorNumber + 10;
+        Player.resources += CalculateResourceLoot();
 
         transform.Find("InventoryLoot").gameObject.SetActive(false);
         transform.Find("TakeLootButton").gameObject.SetActive(false);
+    }
+
+    public int CalculateResourceLoot()
+    {
+        int resourceAmount = 2 * GameManager.sectorDifficulty + 2 * GameManager.sectorNumber + 10;
+        return resourceAmount;
     }
 
     
     void Update()
     {
         resourcesText.text = "Resources:" + Player.resources.ToString();
+        lootResourcesText.text = "Resources:" + CalculateResourceLoot().ToString();
         upgradeCostText.text = 
         "Level: " + cockpitRoom.level.ToString() + "  Upgrade Cost: " + cockpitRoom.upgradeCost.ToString() + "\n" + "\n" + "Level: " + engineRoom.level.ToString() + "  Upgrade Cost: " + engineRoom.upgradeCost.ToString() + "\n" + "\n" +
         "Level: " + generatorRoom.level.ToString() + "  Upgrade Cost: " + generatorRoom.upgradeCost.ToString() + "\n" + "\n" + "Level: " + oxygenRoom.level.ToString() + "  Upgrade Cost: " + oxygenRoom.upgradeCost.ToString() + "\n" + "\n" +

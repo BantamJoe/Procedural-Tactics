@@ -109,6 +109,7 @@ public class EnemySpawner : MonoBehaviour {
 
                 playerUI.transform.Find("EvacuateButton").gameObject.SetActive(true);
                 playerUI.transform.Find("InventoryLoot").gameObject.SetActive(true);
+                playerUI.transform.Find("LootResourcesText").gameObject.SetActive(true);
                 playerUI.transform.Find("TakeLootButton").gameObject.SetActive(true);
 
                 //Weapon loot
