@@ -478,7 +478,6 @@ public abstract class Mech : MonoBehaviour {
         foreach (GameObject room in roomList)
         {
             room.GetComponent<Room>().Invoke("CreateExplosion", Random.Range(0f, 2f));
-            print("invoke room:" + room);
         }
     }
 

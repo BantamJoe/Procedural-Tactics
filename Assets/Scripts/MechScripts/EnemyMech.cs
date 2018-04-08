@@ -303,7 +303,6 @@ public class EnemyMech : Mech {
             Destroy(UI);
             Destroy(gameObject, 2.1f);
 
-            print("isdead:" + isDead);
             CreateDeathExplosion();
         }
 

@@ -6,6 +6,7 @@ public abstract class Room : MonoBehaviour {
     public Stat health;
     public Generator generator;
 
+    public int energyOnHit;
     public int previousHealth;
     public int level = 1;
     public int upgradeCost = 50;
@@ -176,6 +177,13 @@ public abstract class Room : MonoBehaviour {
         {
             regenAmount = 0;
             health.CurrentVal++;
+            if (gameObject.name != "WeaponRoom")
+            {
+                if (energyOnHit > ener.CurrentVal)
+                {
+                    IncreaseEnergy(1);
+                }
+            }
         }
 
         if (health.CurrentVal == health.MaxVal)

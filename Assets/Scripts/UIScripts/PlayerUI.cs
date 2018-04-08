@@ -76,6 +76,7 @@ public class PlayerUI : MonoBehaviour {
         Player.resources += CalculateResourceLoot();
 
         transform.Find("InventoryLoot").gameObject.SetActive(false);
+        lootResourcesText.gameObject.SetActive(false);
         transform.Find("TakeLootButton").gameObject.SetActive(false);
     }
 

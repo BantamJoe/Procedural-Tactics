@@ -19,7 +19,7 @@ public class ShieldRoom : Room {
         shield.CurrentVal = shield.MaxVal;
 
         regenTime = 2f;
-        regenSpeed = 0.05f;
+        regenSpeed = 0.07f;
         regenAmount = regenTime;
 
         upgradeCost = 50;

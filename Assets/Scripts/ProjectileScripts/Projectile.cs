@@ -84,6 +84,7 @@ public class Projectile : MonoBehaviour {
 
                 if (enemyRoom.health.CurrentVal > 0)
                 {
+                    enemyRoom.energyOnHit = enemyRoom.ener.CurrentVal;
                     enemyRoom.health.CurrentVal -= damage;
                 }
 

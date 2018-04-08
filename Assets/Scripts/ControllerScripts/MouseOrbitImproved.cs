@@ -138,7 +138,7 @@ public class MouseOrbitImproved : MonoBehaviour
     public float UpdateTargetRadius(Transform target)
     {
         float radius = target.GetComponent<SphereCollider>().radius * target.transform.localScale.x;
-        distanceMin = radius + 3;
+        distanceMin = radius + 10;
         distanceMax = distanceMin + 150;
         distance = (distanceMin + distanceMax) / 2 - (75 - radius);
         return radius;

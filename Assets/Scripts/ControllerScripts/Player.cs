@@ -104,7 +104,7 @@ public class Player : MonoBehaviour {
                     SceneManager.LoadScene("DirtZone");
                 }
 
-                if (hitInfo.transform.parent.name == "Moon(Clone)")
+                if (hitInfo.transform.parent.name == "Moon")
                 {
                     SceneManager.LoadScene("MoonZone");
                 }
